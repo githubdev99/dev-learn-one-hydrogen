@@ -4,7 +4,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import {useEffect, useState} from 'react';
-import {Link} from '@shopify/hydrogen/client';
+import {Link, useCart, useCartLine} from '@shopify/hydrogen/client';
 
 import CartToggle from './CartToggle.client';
 import {useCartUI} from './CartUIProvider.client';
@@ -779,148 +779,15 @@ export default function Header({collections, storeName}) {
               </a>
             </li>
             <li className="header__cart">
-              <a href="cart.html">
-                <AiOutlineShoppingCart />
-                <span>2</span>
+              <a href="#">
+                {/* <AiOutlineShoppingCart /> */}
+                {/* <span>{totalQuantity}</span> */}
+                <CartToggle
+                  handleClick={() => {
+                    if (isMobileNavOpen) setIsMobileNavOpen(false);
+                  }}
+                />
               </a>
-              {/* Header cart */}
-              <div className="header-cart">
-                {/* Cart items */}
-                <ul className="header-cart__items">
-                  {/* Item */}
-                  <li className="cart-item d-flex">
-                    {/* Item image */}
-                    <p className="cart-item__image">
-                      <a href="product.html">
-                        <img
-                          alt="Image"
-                          data-sizes="auto"
-                          data-srcset="assets/products/1/10a.jpg 400w,
-                    assets/products/1/10a.jpg 800w"
-                          src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                          className="lazyload"
-                        />
-                      </a>
-                    </p>
-                    {/* End item image */}
-                    {/* Item details */}
-                    <p className="cart-item__details">
-                      <a href="product.html" className="cart-item__title">
-                        Slim fit modal cotton shirt
-                      </a>
-                      <span className="cart-item__variant">Grey, M</span>
-                      <span className="cart-ietm__price">
-                        2 <i>x</i> $113.99
-                      </span>
-                    </p>
-                    {/* End item details */}
-                    {/* Item delete */}
-                    <p className="cart-item__delete">
-                      <a href="#">
-                        <i className="lnil lnil-close" />
-                      </a>
-                    </p>
-                    {/* Item delete */}
-                  </li>
-                  {/* End item */}
-                  {/* Item */}
-                  <li className="cart-item d-flex">
-                    {/* Item image */}
-                    <p className="cart-item__image">
-                      <a href="product.html">
-                        <img
-                          alt="Image"
-                          data-sizes="auto"
-                          data-srcset="assets/products/1/11a.jpg 400w,
-                    assets/products/1/11a.jpg 800w"
-                          src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                          className="lazyload"
-                        />
-                      </a>
-                    </p>
-                    {/* End item image */}
-                    {/* Item details */}
-                    <p className="cart-item__details">
-                      <a href="product.html" className="cart-item__title">
-                        Suede sport shoes
-                      </a>
-                      <span className="cart-item__variant">Bold Brown, 40</span>
-                      <span className="cart-ietm__price">
-                        1 <i>x</i> $45.5
-                      </span>
-                    </p>
-                    {/* End item details */}
-                    {/* Item delete */}
-                    <p className="cart-item__delete">
-                      <a href="#">
-                        <i className="lnil lnil-close" />
-                      </a>
-                    </p>
-                    {/* Item delete */}
-                  </li>
-                  {/* End item */}
-                  {/* Item */}
-                  <li className="cart-item d-flex">
-                    {/* Item image */}
-                    <p className="cart-item__image">
-                      <a href="product.html">
-                        <img
-                          alt="Image"
-                          data-sizes="auto"
-                          data-srcset="assets/products/1/12a.jpg 400w,
-                    assets/products/1/12a.jpg 800w"
-                          src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                          className="lazyload"
-                        />
-                      </a>
-                    </p>
-                    {/* End item image */}
-                    {/* Item details */}
-                    <p className="cart-item__details">
-                      <a href="product.html" className="cart-item__title">
-                        Pebbled crossbody belt bag
-                      </a>
-                      <span className="cart-ietm__price">
-                        1 <i>x</i> $129.99
-                      </span>
-                    </p>
-                    {/* End item details */}
-                    {/* Item delete */}
-                    <p className="cart-item__delete">
-                      <a href="#">
-                        <i className="lnil lnil-close" />
-                      </a>
-                    </p>
-                    {/* Item delete */}
-                  </li>
-                  {/* End item */}
-                </ul>
-                {/* End cart items */}
-                {/* Subtotal */}
-                <div className="header-cart__subtotal d-flex">
-                  {/* Title */}
-                  <div className="subtotal__title">Subtotal</div>
-                  {/* End title */}
-                  {/* Value */}
-                  <div className="subtotal__value">$272.47</div>
-                  {/* End value */}
-                </div>
-                {/* End subtotal */}
-                {/* Header cart action */}
-                <div className="header-cart__action">
-                  <a
-                    href="checkout.html"
-                    className="header-cart__button header-cart__button--checkout"
-                  >
-                    Checkout
-                  </a>
-                  <a href="cart.html" className="header-cart__button">
-                    View cart
-                  </a>
-                </div>
-                {/* End Header cart action */}
-              </div>
-              {/* End header cart */}
             </li>
           </ul>
           {/* End header right */}
