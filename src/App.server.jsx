@@ -8,17 +8,20 @@ import {
   PerformanceMetrics,
   PerformanceMetricsDebug,
 } from '@shopify/hydrogen/client';
+import JQueryLoad from './components/JQueryLoad.client';
 
 function App() {
   return (
     <Suspense>
       <ShopifyProvider>
         <CartProvider>
-          <DefaultSeo />
-          <Router>
-            <FileRoutes />
-            <Route path="*" page={<NotFound />} />
-          </Router>
+          <JQueryLoad>
+            <DefaultSeo />
+            <Router>
+              <FileRoutes />
+              <Route path="*" page={<NotFound />} />
+            </Router>
+          </JQueryLoad>
         </CartProvider>
         <PerformanceMetrics />
         {process.env.LOCAL_DEV && <PerformanceMetricsDebug />}

@@ -12,7 +12,6 @@ import {Suspense} from 'react';
 import Header from './Header.client';
 import Footer from './Footer.server';
 import Cart from './Cart.client';
-import HomeSlider from './HomeSlider.server';
 
 /**
  * A server component that defines a structure and organization of a page that can be used in different parts of the Hydrogen app

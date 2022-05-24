@@ -754,10 +754,10 @@ export default function Header({collections, storeName}) {
               </a>
             </li>
             <li className="header__cart">
-              <a href="cart.html">
+              <Link to="/cart">
                 <AiOutlineShoppingCart />
                 <span>2</span>
-              </a>
+              </Link>
               {/* Header cart */}
               <div className="header-cart">
                 {/* Cart items */}

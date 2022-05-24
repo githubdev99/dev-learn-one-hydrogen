@@ -8,12 +8,14 @@ import {
 } from '@shopify/hydrogen';
 import gql from 'graphql-tag';
 import {Suspense, Fragment} from 'react';
-import HomeSlider from './HomeSlider.server';
 
-export default function HomePage() {
+import Layout from '../components/Layout.server';
+import CartSection from '../components/section/CartSection.server';
+
+export default function Cart() {
   return (
-    <Fragment>
-      <HomeSlider />
-    </Fragment>
+    <Layout>
+      <CartSection />
+    </Layout>
   );
 }

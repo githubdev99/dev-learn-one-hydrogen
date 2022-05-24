@@ -13,29 +13,26 @@ import {Suspense} from 'react';
 import Layout from '../components/Layout.server';
 import FeaturedCollection from '../components/FeaturedCollection';
 import ProductCard from '../components/ProductCard';
-import HomePage from '../components/HomePage.server';
-import JQueryLoad from '../components/JQueryLoad.client';
+import HomeSection from '../components/section/HomeSection.server';
 
 export default function Index() {
   const {countryCode = 'US'} = useSession();
 
   return (
-    <JQueryLoad>
-      <Layout hero={<GradientBackground />}>
-        <Suspense fallback={null}>
-          <SeoForHomepage />
+    <Layout hero={<GradientBackground />}>
+      <Suspense fallback={null}>
+        <SeoForHomepage />
+      </Suspense>
+      <div className="relative mb-12">
+        <HomeSection />
+        <Suspense fallback={<BoxFallback />}>
+          <FeaturedProductsBox country={countryCode} />
         </Suspense>
-        <div className="relative mb-12">
-          <HomePage />
-          <Suspense fallback={<BoxFallback />}>
-            <FeaturedProductsBox country={countryCode} />
-          </Suspense>
-          <Suspense fallback={<BoxFallback />}>
-            <FeaturedCollectionBox country={countryCode} />
-          </Suspense>
-        </div>
-      </Layout>
-    </JQueryLoad>
+        <Suspense fallback={<BoxFallback />}>
+          <FeaturedCollectionBox country={countryCode} />
+        </Suspense>
+      </div>
+    </Layout>
   );
 }
 
