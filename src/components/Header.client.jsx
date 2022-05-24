@@ -4,7 +4,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import {useEffect, useState} from 'react';
-import {Link, useCart, useCartLine} from '@shopify/hydrogen/client';
+import {Link, useCart, useCartLine, CartLines} from '@shopify/hydrogen/client';
 
 import CartToggle from './CartToggle.client';
 import {useCartUI} from './CartUIProvider.client';
@@ -25,6 +25,7 @@ export default function Header({collections, storeName}) {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const [scrollbarWidth, setScrollbarWidth] = useState(0);
   const {isCartOpen} = useCartUI();
+  //   const {merchandise} = useCartLine();
 
   useEffect(() => {
     const scrollbarWidth =
@@ -99,12 +100,12 @@ export default function Header({collections, storeName}) {
                 </div>
                 {/* End close mobile menu */}
                 {/* Mobile logo */}
-                <h3 className="mobile-menu__logo">DUROTAN</h3>
+                <h3 className="mobile-menu__logo">{storeName}</h3>
                 {/* End mobile logo */}
                 {/* Mobile Nav */}
                 <ul className="mobile-menu__nav">
                   <li className="mobile-menu__dropdown">
-                    <a href="index.html">Home</a>
+                    <Link to="/">Home</Link>
                     <ul className="mobile-menu__dropdown-menu js-mobile-menu-dropdown-menu">
                       <li>
                         <a href="index.html">Home Page 1</a>
@@ -217,7 +218,7 @@ export default function Header({collections, storeName}) {
           {/* End mobile menu */}
           {/* Logo */}
           <h1 className="header__logo">
-            <a href="index.html">DUROTAN</a>
+            <Link to="/">{storeName}</Link>
           </h1>
           {/* End logo */}
           {/* Navigation */}
@@ -722,36 +723,6 @@ export default function Header({collections, storeName}) {
               </ul>
               {/* End dropdown menu */}
             </li>
-            <li>
-              <a href="#" className="nav__item">
-                Pages
-              </a>
-              {/* Dropdown menu */}
-              <ul className="nav__dropdown-menu">
-                <li>
-                  <a href="404.html">404 Page </a>
-                </li>
-                <li>
-                  <a href="about.html">About</a>
-                </li>
-                <li>
-                  <a href="cart.html">Cart</a>
-                </li>
-                <li>
-                  <a href="checkout.html">Checkout</a>
-                </li>
-                <li>
-                  <a href="coming-soon.html">Coming Soon</a>
-                </li>
-                <li>
-                  <a href="contact.html">Contact</a>
-                </li>
-                <li>
-                  <a href="wishlist.html">Wishlist</a>
-                </li>
-              </ul>
-              {/* End dropdown menu */}
-            </li>
           </ul>
           {/* End navigation */}
           {/* Language switcher */}
@@ -774,20 +745,86 @@ export default function Header({collections, storeName}) {
               </a>
             </li>
             <li>
-              <a href="account.html">
-                <AiOutlineUser />
-              </a>
-            </li>
-            <li className="header__cart">
               <a href="#">
-                {/* <AiOutlineShoppingCart /> */}
-                {/* <span>{totalQuantity}</span> */}
                 <CartToggle
                   handleClick={() => {
                     if (isMobileNavOpen) setIsMobileNavOpen(false);
                   }}
                 />
               </a>
+            </li>
+            <li className="header__cart">
+              <a href="cart.html">
+                <AiOutlineShoppingCart />
+                <span>2</span>
+              </a>
+              {/* Header cart */}
+              <div className="header-cart">
+                {/* Cart items */}
+                <ul className="header-cart__items">
+                  {/* Item */}
+                  <li className="cart-item d-flex">
+                    {/* Item image */}
+                    <p className="cart-item__image">
+                      <a href="product.html">
+                        <img
+                          alt="Image"
+                          data-sizes="auto"
+                          data-srcset="assets/products/1/10a.jpg 400w,
+                    assets/products/1/10a.jpg 800w"
+                          src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                          className="lazyload"
+                        />
+                      </a>
+                    </p>
+                    {/* End item image */}
+                    {/* Item details */}
+                    <p className="cart-item__details">
+                      <a href="product.html" className="cart-item__title">
+                        Slim fit modal cotton shirt
+                      </a>
+                      <span className="cart-item__variant">Grey, M</span>
+                      <span className="cart-ietm__price">
+                        2 <i>x</i> $113.99
+                      </span>
+                    </p>
+                    {/* End item details */}
+                    {/* Item delete */}
+                    <p className="cart-item__delete">
+                      <a href="#">
+                        <i className="lnil lnil-close" />
+                      </a>
+                    </p>
+                    {/* Item delete */}
+                  </li>
+                  {/* End item */}
+                </ul>
+                {/* End cart items */}
+                {/* Subtotal */}
+                <div className="header-cart__subtotal d-flex">
+                  {/* Title */}
+                  <div className="subtotal__title">Subtotal</div>
+                  {/* End title */}
+                  {/* Value */}
+                  <div className="subtotal__value">$272.47</div>
+                  {/* End value */}
+                </div>
+                {/* End subtotal */}
+                {/* Header cart action */}
+                <div className="header-cart__action">
+                  <a
+                    href="checkout.html"
+                    className="header-cart__button header-cart__button--checkout"
+                  >
+                    Checkout
+                  </a>
+                  <a href="cart.html" className="header-cart__button">
+                    View cart
+                  </a>
+                </div>
+                {/* End Header cart action */}
+              </div>
+              {/* End header cart */}
             </li>
           </ul>
           {/* End header right */}

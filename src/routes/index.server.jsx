@@ -8,31 +8,31 @@ import {
   useSession,
 } from '@shopify/hydrogen';
 import gql from 'graphql-tag';
-
+import {Suspense} from 'react';
 import Layout from '../components/Layout.server';
 import FeaturedCollection from '../components/FeaturedCollection';
 import ProductCard from '../components/ProductCard';
-import Welcome from '../components/Welcome.server';
-import {Suspense} from 'react';
+import JQueryLoad from '../components/JQueryLoad.client';
 
 export default function Index() {
   const {countryCode = 'US'} = useSession();
 
   return (
-    <Layout hero={<GradientBackground />}>
-      <Suspense fallback={null}>
-        <SeoForHomepage />
-      </Suspense>
-      <div className="relative mb-12">
-        <Welcome />
-        <Suspense fallback={<BoxFallback />}>
-          <FeaturedProductsBox country={countryCode} />
+    <JQueryLoad>
+      <Layout hero={<GradientBackground />}>
+        <Suspense fallback={null}>
+          <SeoForHomepage />
         </Suspense>
-        <Suspense fallback={<BoxFallback />}>
-          <FeaturedCollectionBox country={countryCode} />
-        </Suspense>
-      </div>
-    </Layout>
+        <div className="relative mb-12">
+          <Suspense fallback={<BoxFallback />}>
+            <FeaturedProductsBox country={countryCode} />
+          </Suspense>
+          <Suspense fallback={<BoxFallback />}>
+            <FeaturedCollectionBox country={countryCode} />
+          </Suspense>
+        </div>
+      </Layout>
+    </JQueryLoad>
   );
 }
 

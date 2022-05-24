@@ -113,11 +113,11 @@ function LineInCart() {
           <CartLineProductTitle className="text-lg font-medium" />
         </Link>
         <ul className="text-xs space-y-1">
-          {merchandise.selectedOptions.map(({name, value}) => (
+          {/* {merchandise.selectedOptions.map(({name, value}) => (
             <li key={name}>
               {name}: {value}
             </li>
-          ))}
+          ))} */}
         </ul>
         <CartItemQuantity />
       </div>

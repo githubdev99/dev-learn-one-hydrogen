@@ -7,11 +7,12 @@ import {
   CacheHours,
 } from '@shopify/hydrogen';
 import gql from 'graphql-tag';
+import {Suspense} from 'react';
 
 import Header from './Header.client';
 import Footer from './Footer.server';
 import Cart from './Cart.client';
-import {Suspense} from 'react';
+import HomeSlider from './HomeSlider.server';
 
 /**
  * A server component that defines a structure and organization of a page that can be used in different parts of the Hydrogen app
@@ -34,28 +35,19 @@ export default function Layout({children, hero}) {
 
   return (
     <LocalizationProvider preload="*">
-      <div className="absolute top-0 left-0">
-        <a
-          href="#mainContent"
-          className="p-4 focus:block sr-only focus:not-sr-only"
-        >
-          Skip to content
-        </a>
-      </div>
-      <div className="min-h-screen max-w-screen text-gray-700 font-sans">
-        {/* TODO: Find out why Suspense needs to be here to prevent hydration errors. */}
-        <Suspense fallback={null}>
-          <Header collections={collections} storeName={storeName} />
-          <Cart />
-        </Suspense>
-        <main role="main" id="mainContent" className="relative bg-gray-50">
-          {/* {hero} */}
-          <div className="mx-auto max-w-7xl p-4 md:py-5 md:px-8">
-            <Suspense fallback={null}>{children}</Suspense>
-          </div>
-        </main>
-        <Footer collection={collections[0]} product={products[0]} />
-      </div>
+      {/* TODO: Find out why Suspense needs to be here to prevent hydration errors. */}
+      <Suspense fallback={null}>
+        <Header collections={collections} storeName={storeName} />
+        <Cart />
+      </Suspense>
+      <HomeSlider />
+      <main role="main" id="mainContent" className="relative bg-gray-50">
+        {/* {hero} */}
+        <div className="mx-auto max-w-7xl p-4 md:py-5 md:px-8">
+          <Suspense fallback={null}>{children}</Suspense>
+        </div>
+      </main>
+      <Footer storeName={storeName} />
     </LocalizationProvider>
   );
 }
