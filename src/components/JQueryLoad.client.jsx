@@ -4,7 +4,7 @@ import {useEffect} from 'react';
 
 export default function JQueryLoad({children}) {
   useEffect(() => {
-    const $ = window.$;
+    const jQuery = window.$;
 
     var durotan;
     (function ($) {
