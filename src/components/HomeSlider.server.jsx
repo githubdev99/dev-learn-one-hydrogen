@@ -1,3 +1,5 @@
+/* eslint-disable hydrogen/prefer-image-component */
+/* eslint-disable jsx-a11y/img-redundant-alt */
 /* eslint-disable no-unused-vars */
 import {
   useShop,
@@ -40,7 +42,7 @@ export default function HomeSlider() {
                   <div className="slider__tag js-slider-tag">New arrival</div>
                   {/* End slider tag */}
                   {/* Slider heading */}
-                  <h2 className="slider__heading js-slider-heading">
+                  <h2 className="slider__heading js-slider-heading text-[80px]">
                     Basic Colours Comeback
                   </h2>
                   {/* End slider heading */}
@@ -132,7 +134,7 @@ export default function HomeSlider() {
                   </div>
                   {/* End slider tag */}
                   {/* Slider heading */}
-                  <h2 className="slider__heading js-slider-heading">
+                  <h2 className="slider__heading js-slider-heading text-[80px]">
                     Crossbody Belt Bags
                   </h2>
                   {/* End slider heading */}
@@ -203,7 +205,7 @@ export default function HomeSlider() {
                 {/* Slider content */}
                 <div className="slider__content">
                   {/* Slider heading */}
-                  <h2 className="slider__heading slider__heading-type-2 js-slider-heading">
+                  <h2 className="slider__heading slider__heading-type-2 js-slider-heading text-[80px]">
                     Discount <span>50%</span>
                     Sunglasses
                   </h2>
