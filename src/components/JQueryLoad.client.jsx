@@ -6,10 +6,6 @@ export default function JQueryLoad({children}) {
   useEffect(() => {
     const $ = window.$;
 
-    document
-      .querySelector('body')
-      .classList.add(window.location.pathname === '/' ? 'home' : '404');
-
     var durotan;
     (function ($) {
       'use strict';

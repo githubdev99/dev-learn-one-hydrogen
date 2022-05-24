@@ -14,25 +14,28 @@ import Layout from '../components/Layout.server';
 import FeaturedCollection from '../components/FeaturedCollection';
 import ProductCard from '../components/ProductCard';
 import HomePage from '../components/HomePage.server';
+import JQueryLoad from '../components/JQueryLoad.client';
 
 export default function Index() {
   const {countryCode = 'US'} = useSession();
 
   return (
-    <Layout hero={<GradientBackground />}>
-      <Suspense fallback={null}>
-        <SeoForHomepage />
-      </Suspense>
-      <div className="relative mb-12">
-        <HomePage />
-        <Suspense fallback={<BoxFallback />}>
-          <FeaturedProductsBox country={countryCode} />
+    <JQueryLoad>
+      <Layout hero={<GradientBackground />}>
+        <Suspense fallback={null}>
+          <SeoForHomepage />
         </Suspense>
-        <Suspense fallback={<BoxFallback />}>
-          <FeaturedCollectionBox country={countryCode} />
-        </Suspense>
-      </div>
-    </Layout>
+        <div className="relative mb-12">
+          <HomePage />
+          <Suspense fallback={<BoxFallback />}>
+            <FeaturedProductsBox country={countryCode} />
+          </Suspense>
+          <Suspense fallback={<BoxFallback />}>
+            <FeaturedCollectionBox country={countryCode} />
+          </Suspense>
+        </div>
+      </Layout>
+    </JQueryLoad>
   );
 }
 
