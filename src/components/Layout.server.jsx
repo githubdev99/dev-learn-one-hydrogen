@@ -40,7 +40,6 @@ export default function Layout({children, hero}) {
         <Header collections={collections} storeName={storeName} />
         <Cart />
       </Suspense>
-      <HomeSlider />
       <main role="main" id="mainContent" className="relative bg-gray-50">
         {/* {hero} */}
         <div className="mx-auto max-w-7xl p-4 md:py-5 md:px-8">
