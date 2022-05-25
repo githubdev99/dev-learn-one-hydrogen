@@ -178,7 +178,7 @@ export default function Footer(props) {
             <div className="col-lg-6 copyright__payment flex justify-end">
               <span>Accept for</span>
               <img
-                src="assets/images/default/payment.png"
+                src="/assets/images/default/payment.png"
                 alt="Payment method"
               />
             </div>

@@ -12,6 +12,8 @@ import {Suspense} from 'react';
 import Header from './Header.client';
 import Footer from './Footer.server';
 import Cart from './Cart.client';
+import SearchPopup from './SearchPopup.client';
+import CartSection from './section/CartSection.client';
 
 /**
  * A server component that defines a structure and organization of a page that can be used in different parts of the Hydrogen app
@@ -43,6 +45,8 @@ export default function Layout({children, hero}) {
         <Suspense fallback={null}>{children}</Suspense>
       </main>
       <Footer storeName={storeName} />
+      <CartSection />
+      <SearchPopup />
     </LocalizationProvider>
   );
 }

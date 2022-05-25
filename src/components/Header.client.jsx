@@ -12,12 +12,6 @@ import CountrySelector from './CountrySelector.client';
 import Navigation from './Navigation.client';
 import MobileNavigation from './MobileNavigation.client';
 
-import {
-  AiOutlineUser,
-  AiOutlineSearch,
-  AiOutlineShoppingCart,
-} from 'react-icons/ai';
-
 /**
  * A client component that specifies the content of the header on the website
  */
@@ -32,6 +26,8 @@ export default function Header({collections, storeName}) {
 
   //   setScrollbarWidth(scrollbarWidth);
   // }, [isCartOpen]);
+
+  const {totalQuantity} = useCart();
 
   return (
     // <header className="h-20 lg:h-32" role="banner">
@@ -106,9 +102,6 @@ export default function Header({collections, storeName}) {
                   <li>
                     <Link to="/">Home</Link>
                   </li>
-                  <li>
-                    <a href="about.html">About</a>
-                  </li>
                   <li className="mobile-menu__dropdown">
                     <a href="shop.html">Shop</a>
                     <ul className="mobile-menu__dropdown-menu js-mobile-menu-dropdown-menu">
@@ -125,6 +118,9 @@ export default function Header({collections, storeName}) {
                     <div className="mobile-menu__dropdown-btn js-mobile-menu-dropdown-btn">
                       <span className="lnil lnil-chevron-down" />
                     </div>
+                  </li>
+                  <li>
+                    <a href="about.html">About</a>
                   </li>
                 </ul>
                 {/* End Mobile nav */}
@@ -145,11 +141,6 @@ export default function Header({collections, storeName}) {
               <Link to="/" className="nav__item">
                 HOME
               </Link>
-            </li>
-            <li>
-              <a href="about.html" className="nav__item">
-                ABOUT
-              </a>
             </li>
             <li>
               <a href="shop.html" className="nav__item">
@@ -386,6 +377,11 @@ export default function Header({collections, storeName}) {
               </div>
               {/* End MegaMenu */}
             </li>
+            <li>
+              <a href="about.html" className="nav__item">
+                ABOUT
+              </a>
+            </li>
           </ul>
           {/* End navigation */}
           {/* Language switcher */}
@@ -404,13 +400,13 @@ export default function Header({collections, storeName}) {
           <ul className="header__right">
             <li>
               <a href="#" className="js-open-popup-search">
-                <AiOutlineSearch />
+                <i className="lnil lnil-search-alt"></i>
               </a>
             </li>
             <li className="header__cart">
               <a href="#" to="/cart" className="js-open-canvas-cart">
-                <AiOutlineShoppingCart />
-                <span>2</span>
+                <i className="lnil lnil-cart"></i>
+                <span>{totalQuantity}</span>
               </a>
             </li>
           </ul>
