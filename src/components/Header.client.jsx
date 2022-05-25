@@ -22,17 +22,16 @@ import {
  * A client component that specifies the content of the header on the website
  */
 export default function Header({collections, storeName}) {
-  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
-  const [scrollbarWidth, setScrollbarWidth] = useState(0);
-  const {isCartOpen} = useCartUI();
-  //   const {merchandise} = useCartLine();
+  // const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+  // const [scrollbarWidth, setScrollbarWidth] = useState(0);
+  // const {isCartOpen} = useCartUI();
 
-  useEffect(() => {
-    const scrollbarWidth =
-      window.innerWidth - document.documentElement.clientWidth;
+  // useEffect(() => {
+  //   const scrollbarWidth =
+  //     window.innerWidth - document.documentElement.clientWidth;
 
-    setScrollbarWidth(scrollbarWidth);
-  }, [isCartOpen]);
+  //   setScrollbarWidth(scrollbarWidth);
+  // }, [isCartOpen]);
 
   return (
     // <header className="h-20 lg:h-32" role="banner">
@@ -408,87 +407,11 @@ export default function Header({collections, storeName}) {
                 <AiOutlineSearch />
               </a>
             </li>
-            <li>
-              <a href="#">
-                <CartToggle
-                  handleClick={() => {
-                    if (isMobileNavOpen) setIsMobileNavOpen(false);
-                  }}
-                />
-              </a>
-            </li>
             <li className="header__cart">
-              <Link to="/cart">
+              <a href="#" to="/cart" className="js-open-canvas-cart">
                 <AiOutlineShoppingCart />
                 <span>2</span>
-              </Link>
-              {/* Header cart */}
-              <div className="header-cart">
-                {/* Cart items */}
-                <ul className="header-cart__items">
-                  {/* Item */}
-                  <li className="cart-item d-flex">
-                    {/* Item image */}
-                    <p className="cart-item__image">
-                      <a href="product.html">
-                        <img
-                          alt="Image"
-                          data-sizes="auto"
-                          data-srcset="assets/products/1/10a.jpg 400w,
-                    assets/products/1/10a.jpg 800w"
-                          src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                          className="lazyload"
-                        />
-                      </a>
-                    </p>
-                    {/* End item image */}
-                    {/* Item details */}
-                    <p className="cart-item__details">
-                      <a href="product.html" className="cart-item__title">
-                        Slim fit modal cotton shirt
-                      </a>
-                      <span className="cart-item__variant">Grey, M</span>
-                      <span className="cart-ietm__price">
-                        2 <i>x</i> $113.99
-                      </span>
-                    </p>
-                    {/* End item details */}
-                    {/* Item delete */}
-                    <p className="cart-item__delete">
-                      <a href="#">
-                        <i className="lnil lnil-close" />
-                      </a>
-                    </p>
-                    {/* Item delete */}
-                  </li>
-                  {/* End item */}
-                </ul>
-                {/* End cart items */}
-                {/* Subtotal */}
-                <div className="header-cart__subtotal d-flex">
-                  {/* Title */}
-                  <div className="subtotal__title">Subtotal</div>
-                  {/* End title */}
-                  {/* Value */}
-                  <div className="subtotal__value">$272.47</div>
-                  {/* End value */}
-                </div>
-                {/* End subtotal */}
-                {/* Header cart action */}
-                <div className="header-cart__action">
-                  <a
-                    href="checkout.html"
-                    className="header-cart__button header-cart__button--checkout"
-                  >
-                    Checkout
-                  </a>
-                  <a href="cart.html" className="header-cart__button">
-                    View cart
-                  </a>
-                </div>
-                {/* End Header cart action */}
-              </div>
-              {/* End header cart */}
+              </a>
             </li>
           </ul>
           {/* End header right */}

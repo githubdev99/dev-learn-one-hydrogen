@@ -37,7 +37,7 @@ export default function Layout({children, hero}) {
       {/* TODO: Find out why Suspense needs to be here to prevent hydration errors. */}
       <Suspense fallback={null}>
         <Header collections={collections} storeName={storeName} />
-        <Cart />
+        {/* <Cart /> */}
       </Suspense>
       <main role="main" id="mainContent" className="relative bg-gray-50">
         <Suspense fallback={null}>{children}</Suspense>

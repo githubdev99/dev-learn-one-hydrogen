@@ -14,6 +14,7 @@ import Layout from '../components/Layout.server';
 import FeaturedCollection from '../components/FeaturedCollection';
 import ProductCard from '../components/ProductCard';
 import HomeSection from '../components/section/HomeSection.server';
+import CartSection from '../components/section/CartSection.client';
 
 export default function Index() {
   const {countryCode = 'US'} = useSession();
@@ -25,6 +26,7 @@ export default function Index() {
       </Suspense>
       <div className="relative mb-12">
         <HomeSection />
+        <CartSection />
         <Suspense fallback={<BoxFallback />}>
           <FeaturedProductsBox country={countryCode} />
         </Suspense>
