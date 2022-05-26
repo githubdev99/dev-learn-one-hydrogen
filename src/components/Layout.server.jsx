@@ -45,7 +45,7 @@ export default function Layout({children, hero}) {
         <Suspense fallback={null}>{children}</Suspense>
       </main>
       <Footer storeName={storeName} />
-      <CartSection />
+      {/* <CartSection /> */}
       <SearchPopup />
     </LocalizationProvider>
   );

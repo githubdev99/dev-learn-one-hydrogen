@@ -189,10 +189,17 @@ export default function Header({collections, storeName}) {
               </a>
             </li>
             <li className="header__cart">
-              <a href="#" to="/cart" className="js-open-canvas-cart">
+              {/* Open Cart Sidebar */}
+              {/* <a href="#" to="/cart" className="js-open-canvas-cart">
                 <i className="lnil lnil-cart"></i>
                 <span>{totalQuantity}</span>
-              </a>
+              </a> */}
+
+              {/* Go to Cart Page */}
+              <Link to={`/cart`} className="text-blue-600 hover:underline">
+                <i className="lnil lnil-cart"></i>
+                <span>{totalQuantity}</span>
+              </Link>
             </li>
           </ul>
           {/* End header right */}
