@@ -107,15 +107,6 @@ export default function CartSectionPage() {
                         Proceed to checkout
                       </CartCheckoutButton>
                     </div>
-                    <div className="order-summary__accept-payment-methods">
-                      <h4 className="accept-payment-methods__title">
-                        Accept Payment Methods
-                      </h4>
-                      <img
-                        src="assets/images/default/payment.png"
-                        alt="Payment"
-                      />
-                    </div>
                   </div>
                   {/* End background */}
                   {/* Action */}

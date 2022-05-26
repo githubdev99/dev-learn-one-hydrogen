@@ -29,10 +29,6 @@ export default function Header({collections, storeName}) {
 
   const {totalQuantity} = useCart();
 
-  useEffect(() => {
-    console.log(JSON.stringify(collections));
-  }, []);
-
   return (
     // <header className="h-20 lg:h-32" role="banner">
     //   <div
