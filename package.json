@@ -10,10 +10,10 @@
     "lint": "npm-run-all lint:*",
     "lint:js": "eslint --resolve-plugins-relative-to . --no-error-on-unmatched-pattern --ext .js,.ts,.jsx,.tsx src",
     "lint:css": "stylelint ./src/**/*.{css,sass,scss}",
-    "build": "npm run build:client && npm run build:ssr && npm run prepare:output",
+    "prepare:output": "rm -rf .output && cp -r output-template .output && cp -r dist/client .output/static && rm .output/static/index.html && cp dist/worker/index.js .output/server/pages/_middleware.js",
+    "build": "yarn build:client && yarn build:worker && yarn prepare:output",
     "build:client": "vite build --outDir dist/client --manifest",
     "build:ssr": "cross-env WORKER=true vite build --ssr @netlify/hydrogen-platform/handler",
-    "prepare:output": "rm -rf .output && cp -r output-template .output && cp -r dist/client .output/static && rm .output/static/index.html && cp dist/worker/index.js .output/server/pages/_middleware.js",
     "build:server": "vite build --outDir dist/server --ssr @shopify/hydrogen/platforms/node",
     "build:worker": "cross-env WORKER=true vite build --outDir dist/worker --ssr edge-entry",
     "serve": "node --enable-source-maps dist/server",
@@ -44,14 +44,13 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.5.0",
-    "@shopify/hydrogen": "^0.19.0",
+    "@shopify/hydrogen": "0.19.0-experimental.2",
     "body-parser": "^1.20.0",
     "compression": "^1.7.4",
     "graphql-tag": "^2.12.4",
     "jquery": "^3.6.0",
     "react": "0.0.0-experimental-2bf7c02f0-20220314",
     "react-dom": "0.0.0-experimental-2bf7c02f0-20220314",
-    "react-icons": "^4.3.1",
-    "serve-static": "^1.14.1"
+    "react-icons": "^4.3.1"
   }
 }
