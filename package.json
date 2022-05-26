@@ -13,7 +13,7 @@
     "build": "npm run build:client && npm run build:ssr && npm run build:server",
     "build:client": "vite build --outDir dist/client --manifest",
     "build:ssr": "cross-env WORKER=true vite build --ssr @netlify/hydrogen-platform/handler",
-    "build:server": "vite build --outDir dist/server --ssr serverless-entry",
+    "build:server": "vite build --outDir dist/server --ssr @shopify/hydrogen/platforms/node",
     "build:worker": "cross-env WORKER=true vite build --outDir dist/worker --ssr @shopify/hydrogen/platforms/worker",
     "serve": "node --enable-source-maps dist/server",
     "test": "WATCH=true vitest",
