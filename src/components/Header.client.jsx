@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable hydrogen/prefer-image-component */
 /* eslint-disable jsx-a11y/img-redundant-alt */
 /* eslint-disable eslint-comments/disable-enable-pair */
@@ -15,7 +16,7 @@ import MobileNavigation from './MobileNavigation.client';
 /**
  * A client component that specifies the content of the header on the website
  */
-export default function Header({collections, storeName}) {
+export default function Header({collections, storeName, productTypes}) {
   // const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   // const [scrollbarWidth, setScrollbarWidth] = useState(0);
   // const {isCartOpen} = useCartUI();
@@ -144,20 +145,50 @@ export default function Header({collections, storeName}) {
             </li>
             <li>
               <a href="shop.html" className="nav__item">
-                SHOP
+                Shop
               </a>
-              <ul className="nav__dropdown-menu">
-                <li>
-                  <Link to="/shop">Shop All</Link>
-                </li>
-                <li>
-                  <a href="blog-with-sidebar.html">Blog with sidebar</a>
-                </li>
-                <li>
-                  <a href="post.html">Blog post</a>
-                </li>
-              </ul>
+              {/* MegaMenu */}
+              <div className="nav__mega-menu">
+                {productTypes && (
+                  <div className="mega-menu__standard-column">
+                    {/* Column title */}
+                    <div className="standard-column__title">Category</div>
+                    {/* End column title */}
+                    {/* Column nav */}
+                    <ul className="standard-column__nav">
+                      {productTypes.map((productType, iProductType) => (
+                        <li key={iProductType}>
+                          <Link to={`/category/${productType}`}>
+                            {productType}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                    {/* End column nav */}
+                  </div>
+                )}
+                {collections && (
+                  <div className="mega-menu__standard-column">
+                    {/* Column title */}
+                    <div className="standard-column__title">Collections</div>
+                    {/* End column title */}
+                    {/* Column nav */}
+                    <ul className="standard-column__nav">
+                      {collections.map((collection) => (
+                        <li key={collection.id}>
+                          <Link to={`/collections/${collection.handle}`}>
+                            {collection.title}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                    {/* End column nav */}
+                  </div>
+                )}
+              </div>
+              {/* End MegaMenu */}
             </li>
+
             <li>
               <a href="about.html" className="nav__item">
                 ABOUT
